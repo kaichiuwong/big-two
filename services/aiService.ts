@@ -1,7 +1,7 @@
 import { GoogleGenAI, Schema, Type } from "@google/genai";
 import { Card, PlayedHand, Player, Rank, Suit } from '../types';
 import { formatHand, sortHand, getCardSymbol, getSuitSymbol } from '../utils/cardUtils';
-import { isValidMove, analyzeHand } from '../utils/gameLogic';
+import { isValidMove } from '../utils/gameLogic';
 
 // We instantiate genAI inside the function to ensure fresh keys if needed, though here we use process.env
 const MODEL_NAME = "gemini-2.5-flash";

@@ -1,14 +1,12 @@
-
-import React, { useEffect, useState, useRef } from 'react';
-import { GameState, Player, Card as CardType, PlayedHand, Suit, Rank } from './types';
-import { createDeck, shuffleDeck, sortHand, formatHand, findThreeOfDiamonds } from './utils/cardUtils';
+import { useEffect, useState, useRef } from 'react';
+import { GameState, Player, Card as CardType, Suit, Rank } from './types';
+import { createDeck, shuffleDeck, sortHand, findThreeOfDiamonds } from './utils/cardUtils';
 import { isValidMove, analyzeHand, isHandUnbeatable } from './utils/gameLogic';
 import { PlayerArea } from './components/PlayerArea';
 import { Card } from './components/Card';
 import { getAiMove } from './services/aiService';
 import { playSound } from './utils/audio';
-import { clsx } from 'clsx';
-import { Trophy, RefreshCcw, User, Cpu, AlertCircle, Info, Clock } from 'lucide-react';
+import { Trophy, RefreshCcw, Cpu, AlertCircle, Clock } from 'lucide-react';
 
 // Real images for avatars
 const AVATARS = [
