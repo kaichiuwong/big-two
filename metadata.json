@@ -1,0 +1,5 @@
+{
+  "name": "Gemini Big Two (鋤大D)",
+  "description": "A classic Cantonese card game (Cho Dai Dee) playable against Gemini AI. Features intelligent 4-player gameplay, valid move checking, and a polished UI.",
+  "requestFramePermissions": []
+}
