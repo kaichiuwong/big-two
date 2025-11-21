@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from 'react';
 import { GameState, Player, Card as CardType, PlayedHand, Suit, Rank } from './types';
 import { createDeck, shuffleDeck, sortHand, formatHand, findThreeOfDiamonds } from './utils/cardUtils';
@@ -5,6 +6,7 @@ import { isValidMove, analyzeHand, isHandUnbeatable } from './utils/gameLogic';
 import { PlayerArea } from './components/PlayerArea';
 import { Card } from './components/Card';
 import { getAiMove } from './services/aiService';
+import { playSound } from './utils/audio';
 import { clsx } from 'clsx';
 import { Trophy, RefreshCcw, User, Cpu, AlertCircle, Info, Clock } from 'lucide-react';
 
@@ -213,6 +215,12 @@ function App() {
 
     const newPassing = [false, false, false, false]; 
 
+    // Play Sound Effect
+    playSound('play');
+    if (winner !== null) {
+        setTimeout(() => playSound('win'), 500);
+    }
+
     setGameState(prev => ({
       ...prev,
       players: newPlayers,
@@ -231,6 +239,9 @@ function App() {
   const passTurn = (playerId: number) => {
     const newPassing = [...gameState.passingPlayers];
     newPassing[playerId] = true;
+
+    // Play Sound Effect
+    playSound('pass');
 
     let nextIndex = (playerId + 1) % 4;
     
