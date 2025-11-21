@@ -29,12 +29,16 @@ export const PlayerArea: React.FC<PlayerAreaProps> = ({
   const isVertical = position === 'left' || position === 'right';
 
   // Vertical overlap for side players
-  const verticalOverlap = isMobile ? "-mt-12" : "-mt-16";
+  // Further Increased density to compact vertical hands
+  const verticalOverlap = isMobile ? "-mt-20" : "-mt-28";
   
   // Horizontal overlap for top/bottom players
+  // Increased density: 
+  // High card count (>10): Mobile -8 -> -12, Desktop -10 -> -16
+  // Low card count: Mobile -6 -> -10, Desktop -8 -> -12
   const horizontalOverlap = player.hand.length > 10 
-      ? (isMobile ? "-ml-8" : "-ml-10") 
-      : (isMobile ? "-ml-6" : "-ml-8");
+      ? (isMobile ? "-ml-12" : "-ml-16") 
+      : (isMobile ? "-ml-10" : "-ml-12");
 
   // Render logic: Top player has Avatar First. All others (Left, Right, Bottom) have Avatar Last (Bottom).
   const showAvatarTop = position === 'top';
